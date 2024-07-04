@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
-// schema design
 const validator = require("validator");
+const MainDiamond = require("./MainDiamond");
+const DiamondShell = require("./DiamondShell");
 
 const productsSchema = mongoose.Schema(
   {
@@ -107,20 +108,119 @@ const productsSchema = mongoose.Schema(
       },
       default: "in-stock",
     },
-    classificationAttributes: [
-      {
+    mainDiamond: {
+      origin: {
         type: String,
         required: false,
-        trim: true,
+      },
+      caratWeight: {
+        type: String,
+      },
+      cut: {
+        type: String,
+      },
+      color: {
+        type: String,
+      },
+      clarity: {
+        type: String,
+      },
+    },
+    diamondShell: {
+      size: {
+        type: String,
+        required: false,
+      },
+      material: {
+        type: String,
+        required: false,
+      },
+    },
+    sideStone: {
+      name: {
+        type: String,
+        required: false,
+      },
+      amount: {
+        type: Number,
+        required: false,
+      },
+    },
+    processingFee: {
+      type: Number,
+      required: false,
+    },
+    classificationAttributes: [
+      {
+        type: {
+          type: String,
+        },
+        attributes: [
+          {
+            key: { type: String },
+            value: [{ type: String }],
+          },
+        ],
+      },
+    ],
+    productSpecifications: [
+      {
+        type: {
+          type: String,
+        },
+        sets: [
+          {
+            set_id: { type: Number },
+            set_values: [
+              {
+                key: { type: String },
+                value: { type: String },
+              },
+            ],
+            set_price: { type: Number },
+          },
+        ],
       },
     ],
     productVariants: [
       {
-        type: String,
-        required: false,
-        trim: true,
+        productVariantAttributes: [
+          {
+            type: {
+              type: String,
+            },
+            set: {
+              set_id: { type: Number },
+              set_values: [
+                {
+                  key: { type: String },
+                  value: { type: String },
+                },
+              ],
+              set_price: { type: Number },
+            },
+          },
+        ],
+        finalPrice: {
+          type: Number,
+          min: [0, "Product price can't be negative"],
+        },
+        quantity: {
+          type: Number,
+          min: [0, "Product quantity can't be negative"],
+        },
       },
     ],
+    lowestPrice: {
+      type: Number,
+      required: false,
+      min: [0, "Product price can't be negative"],
+    },
+    highestPrice: {
+      type: Number,
+      required: false,
+      min: [0, "Product price can't be negative"],
+    },
     reviews: [{ type: ObjectId, ref: "Reviews" }],
     productType: {
       type: String,
@@ -160,6 +260,25 @@ const productsSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+// // Pre-save middleware to compute lowest and highest prices
+// productsSchema.pre("save", function (next) {
+//   if (this.productVariants && this.productVariants.length > 0) {
+//     const prices = this.productVariants
+//       .filter((variant) => typeof variant === "string") // Ensure the variant is a string
+//       .map((variant) => {
+//         const parts = variant.split(";");
+//         return parseFloat(parts[parts.length - 2]);
+//       });
+
+//     this.lowestPrice = Math.min(...prices);
+//     this.highestPrice = Math.max(...prices);
+//   } else {
+//     this.lowestPrice = this.price;
+//     this.highestPrice = this.price;
+//   }
+//   next();
+// });
 
 const Products = mongoose.model("Products", productsSchema);
 
