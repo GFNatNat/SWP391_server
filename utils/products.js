@@ -18,8 +18,8 @@ const products = [
       material: "gold 99k",
     },
     sideStone: {
-      name: "quartz",
-      amount: 40,
+      sideStoneName: "quartz",
+      sideStoneAmount: 40,
     },
     processingFee: 1000,
     classificationAttributes: [
@@ -712,7 +712,7 @@ const products = [
         img: "https://i.ibb.co/2W3S5Xc/bracelet-3.png",
       },
     ],
-    parent: "Bracelets",
+    parent: "Rings",
     children: "Gold",
     discount: 3,
     quantity: 10,
@@ -721,8 +721,8 @@ const products = [
       id: "643134d4e2c1bd22cebb2130",
     },
     category: {
-      name: "Bracelets",
-      id: "64312cd3e2c1bd22cebb2129",
+      name: "Rings",
+      id: "98765cf0e2c1bd22cebb212b",
     },
     status: "in-stock",
     reviews: ["6468636b4edd5c527109318f"],
@@ -739,47 +739,12 @@ const products = [
         value: "12 mm",
       },
       {
-        key: "Main Diamond Size",
-        value: "5 ly",
-      },
-      {
-        key: "Side Stone",
-        value: "Quartz",
-      },
-      {
-        key: "Diamond Origin",
-        value: "Natural",
-      },
-      {
-        key: "Cut",
-        value: "Very Good",
-      },
-      {
-        key: "Color",
-        value: "H",
-      },
-      {
-        key: "Clarity",
-        value: "VVS1",
-      },
-      {
-        key: "Carat Weight",
-        value: "4 ct",
-      },
-      {
-        key: "GREAT FOR LAYERING",
-        value: "Mini waffle fabric construction",
-      },
-      {
-        key: "LEGENDARY STYLING",
-        value: "Cute keyhole notch neck with custom",
-      },
-      {
-        key: "CUFF DETAILS",
-        value: "Velvet details with lace trim on the cuffs",
+        key: "GREAT FOR FLEXING",
+        value:
+          "Behold elegance in its purest form with our exquisite diamond ring. Crafted to capture hearts with timeless brilliance, it embodies enduring beauty and unparalleled craftsmanship",
       },
     ],
-    tags: ["bracelets", "gold"],
+    tags: ["rings", "gold"],
     featured: true,
     sellCount: 0,
     sizes: [],

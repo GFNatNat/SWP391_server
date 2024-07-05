@@ -2,47 +2,43 @@ const categories = [
   {
     _id: "64312cd3e2c1bd22cebb2129",
     parent: "Bracelets",
-    children: [
-      "Gold",
-      "Silver"
-    ],
+    children: ["Gold", "Silver"],
     productType: "jewelry",
     products: [
       "6431364df5a812bd37e765ac",
       "6431418c5e1d915c39ada44b",
-      "643249b49814bb139594c454"
+      "643249b49814bb139594c454",
     ],
-    status: "Show"
+    status: "Show",
   },
   {
     _id: "64312cf0e2c1bd22cebb212b",
     parent: "Earrings",
-    children: [
-      "Gold",
-      "Silver"
-    ],
+    children: ["Gold", "Silver"],
+    productType: "jewelry",
+    products: ["6431364df5a812bd37e765ac"],
+    status: "Show",
+  },
+  {
+    _id: "98765cf0e2c1bd22cebb212b",
+    parent: "Rings",
+    children: ["Gold", "Silver"],
     productType: "jewelry",
     products: [
       "64313abdf5a812bd37e765bc",
       "64323fd99814bb139594c443",
-      "64324f0c9814bb139594c47c"
+      "64324f0c9814bb139594c47c",
     ],
-    status: "Show"
+    status: "Show",
   },
   {
     _id: "64312d00e2c1bd22cebb212d",
     parent: "Necklaces",
-    children: [
-      "Gold",
-      "Silver"
-    ],
+    children: ["Gold", "Silver"],
     productType: "jewelry",
-    products: [
-      "64313e92f5a812bd37e765cf",
-      "6432433c9814bb139594c44c"
-    ],
-    status: "Show"
-  }
-]
+    products: ["64313e92f5a812bd37e765cf", "6432433c9814bb139594c44c"],
+    status: "Show",
+  },
+];
 
 module.exports = categories;

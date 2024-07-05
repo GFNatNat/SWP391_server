@@ -137,11 +137,11 @@ const productsSchema = mongoose.Schema(
       },
     },
     sideStone: {
-      name: {
+      sideStoneName: {
         type: String,
         required: false,
       },
-      amount: {
+      sideStoneAmount: {
         type: Number,
         required: false,
       },
@@ -235,7 +235,18 @@ const productsSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    additionalInformation: [{}],
+    additionalInformation: [
+      {
+        key: {
+          type: String,
+          required: true,
+        },
+        value: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     tags: [String],
     sizes: [String],
     offerDate: {
