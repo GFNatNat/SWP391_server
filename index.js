@@ -19,8 +19,12 @@ const orderRoutes = require("./routes/order.routes");
 const couponRoutes = require("./routes/coupon.routes");
 const reviewRoutes = require("./routes/review.routes");
 const adminRoutes = require("./routes/admin.routes");
-// const uploadRouter = require('./routes/uploadFile.route');
 const cloudinaryRoutes = require("./routes/cloudinary.routes");
+const componentRoutes = require("./routes/component.routes");
+const materialRoutes = require("./routes/material.routes");
+const diamondShellRoutes = require("./routes/diamondShell.routes");
+const mainDiamondRoutes = require("./routes/mainDiamond.routes");
+const sideStoneRoutes = require("./routes/sideStone.routes");
 
 // middleware
 app.use(cors());
@@ -35,13 +39,17 @@ app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/brand", brandRoutes);
 app.use("/api/product", productRoutes);
-// app.use('/api/upload',uploadRouter);
 app.use("/api/order", orderRoutes);
 app.use("/api/coupon", couponRoutes);
 app.use("/api/user-order", userOrderRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/cloudinary", cloudinaryRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/component", componentRoutes);
+app.use("/api/material", materialRoutes);
+app.use("/api/diamond-shell", diamondShellRoutes);
+app.use("/api/main-diamond", mainDiamondRoutes);
+app.use("/api/side-stone", sideStoneRoutes);
 
 // root route
 app.get("/", (req, res) => res.send("Apps worked successfully"));

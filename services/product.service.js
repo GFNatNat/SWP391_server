@@ -7,10 +7,7 @@ exports.createProductService = async (data) => {
   const product = await Product.create(data);
   const { _id: productId, brand, category } = product;
   //update Brand
-  await Brand.updateOne(
-    { _id: brand.id },
-    { $push: { products: productId } }
-  );
+  await Brand.updateOne({ _id: brand.id }, { $push: { products: productId } });
   //Category Brand
   await Category.updateOne(
     { _id: category.id },
@@ -127,9 +124,42 @@ exports.getRelatedProductService = async (productId) => {
   return relatedProducts;
 };
 
+// // update a product
+// exports.updateProductService = async (id, currProduct) => {
+//   // console.log('currProduct',currProduct)
+//   const product = await Product.findById(id);
+//   if (product) {
+//     product.title = currProduct.title;
+//     product.brand.name = currProduct.brand.name;
+//     product.brand.id = currProduct.brand.id;
+//     product.category.name = currProduct.category.name;
+//     product.category.id = currProduct.category.id;
+//     product.sku = currProduct.sku;
+//     product.img = currProduct.img;
+//     product.slug = currProduct.slug;
+//     product.unit = currProduct.unit;
+//     product.imageURLs = currProduct.imageURLs;
+//     product.tags = currProduct.tags;
+//     product.parent = currProduct.parent;
+//     product.children = currProduct.children;
+//     product.price = currProduct.price;
+//     product.discount = currProduct.discount;
+//     product.quantity = currProduct.quantity;
+//     product.status = currProduct.status;
+//     product.productType = currProduct.productType;
+//     product.description = currProduct.description;
+//     product.additionalInformation = currProduct.additionalInformation;
+//     product.offerDate.startDate = currProduct.offerDate.startDate;
+//     product.offerDate.endDate = currProduct.offerDate.endDate;
+
+//     await product.save();
+//   }
+
+//   return product;
+// };
+
 // update a product
 exports.updateProductService = async (id, currProduct) => {
-  // console.log('currProduct',currProduct)
   const product = await Product.findById(id);
   if (product) {
     product.title = currProduct.title;
@@ -154,6 +184,15 @@ exports.updateProductService = async (id, currProduct) => {
     product.additionalInformation = currProduct.additionalInformation;
     product.offerDate.startDate = currProduct.offerDate.startDate;
     product.offerDate.endDate = currProduct.offerDate.endDate;
+    product.mainDiamond = currProduct.mainDiamond;
+    product.diamondShell = currProduct.diamondShell;
+    product.sideStone = currProduct.sideStone;
+    product.processingFee = currProduct.processingFee;
+    product.classificationAttributes = currProduct.classificationAttributes;
+    product.productSpecifications = currProduct.productSpecifications;
+    product.productVariants = currProduct.productVariants;
+    product.lowestPrice = currProduct.lowestPrice;
+    product.highestPrice = currProduct.highestPrice;
 
     await product.save();
   }
@@ -161,31 +200,30 @@ exports.updateProductService = async (id, currProduct) => {
   return product;
 };
 
-
-
 // get Reviews Products
 exports.getReviewsProducts = async () => {
   const result = await Product.find({
     reviews: { $exists: true, $ne: [] },
-  })
-    .populate({
-      path: "reviews",
-      populate: { path: "userId", select: "name email imageURL" },
-    });
+  }).populate({
+    path: "reviews",
+    populate: { path: "userId", select: "name email imageURL" },
+  });
 
-  const products = result.filter(p => p.reviews.length > 0)
+  const products = result.filter((p) => p.reviews.length > 0);
 
   return products;
 };
 
-// get Reviews Products
+// get out of stock products
 exports.getStockOutProducts = async () => {
-  const result = await Product.find({ status: "out-of-stock" }).sort({ createdAt: -1 })
+  const result = await Product.find({ status: "out-of-stock" }).sort({
+    createdAt: -1,
+  });
   return result;
 };
 
-// get Reviews Products
+// delete a product
 exports.deleteProduct = async (id) => {
-  const result = await Product.findByIdAndDelete(id)
+  const result = await Product.findByIdAndDelete(id);
   return result;
 };

@@ -4,11 +4,7 @@ const categories = [
     parent: "Bracelets",
     children: ["Gold", "Silver"],
     productType: "jewelry",
-    products: [
-      "6431364df5a812bd37e765ac",
-      "6431418c5e1d915c39ada44b",
-      "643249b49814bb139594c454",
-    ],
+    products: [],
     status: "Show",
   },
   {
@@ -16,7 +12,7 @@ const categories = [
     parent: "Earrings",
     children: ["Gold", "Silver"],
     productType: "jewelry",
-    products: ["6431364df5a812bd37e765ac"],
+    products: [],
     status: "Show",
   },
   {
@@ -24,11 +20,7 @@ const categories = [
     parent: "Rings",
     children: ["Gold", "Silver"],
     productType: "jewelry",
-    products: [
-      "64313abdf5a812bd37e765bc",
-      "64323fd99814bb139594c443",
-      "64324f0c9814bb139594c47c",
-    ],
+    products: ["6431364df5a812bd37e765ac"],
     status: "Show",
   },
   {
@@ -36,7 +28,7 @@ const categories = [
     parent: "Necklaces",
     children: ["Gold", "Silver"],
     productType: "jewelry",
-    products: ["64313e92f5a812bd37e765cf", "6432433c9814bb139594c44c"],
+    products: [],
     status: "Show",
   },
 ];
